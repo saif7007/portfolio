@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ArrowUpRight, Code2, ExternalLink, Layers3 } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 const projects = [
   {
@@ -32,6 +32,7 @@ const projects = [
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(projects[0].id);
   const project = projects.find((item) => item.id === selectedProject) ?? projects[0];
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section className="section-frame work-section" id="work" aria-labelledby="work-title">
@@ -65,10 +66,10 @@ export default function Projects() {
           <motion.article
             className="project-detail"
             key={project.id}
-            initial={{ opacity: 0, y: 12 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.24 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, y: -12 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.24 }}
             role="tabpanel"
           >
             <div className="project-detail-topline">

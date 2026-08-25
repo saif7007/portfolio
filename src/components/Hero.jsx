@@ -1,40 +1,39 @@
-import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Sparkles } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ArrowDownRight, ArrowUpRight, BriefcaseBusiness, Code2, Sparkles } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 export default function Hero({ onExplore }) {
+  const shouldReduceMotion = useReducedMotion();
+  const enter = (y, delay = 0) => ({
+    initial: shouldReduceMotion ? false : { opacity: 0, y },
+    animate: { opacity: 1, y: 0 },
+    transition: shouldReduceMotion ? { duration: 0 } : { duration: 0.55, delay },
+  });
+
   return (
     <section className="hero-section section-frame" id="top" aria-labelledby="hero-title">
       <div className="hero-copy">
         <motion.p
           className="eyebrow"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
+          {...enter(14)}
         >
           <Sparkles size={14} aria-hidden="true" /> Full-stack engineer · Bangalore, India
         </motion.p>
         <motion.h1
           id="hero-title"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.08 }}
+          {...enter(24, 0.08)}
         >
           Software for the teams<br />
           that keep work <em>moving.</em>
         </motion.h1>
         <motion.p
           className="hero-summary"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.16 }}
+          {...enter(18, 0.16)}
         >
           I&apos;m Saif Khan, a full-stack developer who turns operational complexity into clear, dependable web products—across dashboards, APIs, and business-critical workflows.
         </motion.p>
         <motion.div
           className="hero-actions"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.24 }}
+          {...enter(18, 0.24)}
         >
           <button className="button button-primary" type="button" onClick={onExplore}>
             Explore selected work <ArrowDownRight size={18} aria-hidden="true" />
@@ -47,9 +46,9 @@ export default function Hero({ onExplore }) {
 
       <motion.aside
         className="hero-terminal"
-        initial={{ opacity: 0, scale: 0.96, y: 22 }}
+        initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96, y: 22 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.65, delay: 0.2 }}
+        transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.65, delay: 0.2 }}
         aria-label="Professional profile snapshot"
       >
         <div className="terminal-topline">
@@ -68,8 +67,8 @@ export default function Hero({ onExplore }) {
           <div className="terminal-rule" />
           <p className="terminal-comment">// Explore the signals</p>
           <div className="social-links">
-            <a href="https://github.com/saif7007" target="_blank" rel="noreferrer"><Github size={17} /> GitHub <ArrowUpRight size={14} /></a>
-            <a href="https://www.linkedin.com/in/saif-khan-63b0802a6/" target="_blank" rel="noreferrer"><Linkedin size={17} /> LinkedIn <ArrowUpRight size={14} /></a>
+            <a href="https://github.com/saif7007" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub <ArrowUpRight size={14} /></a>
+            <a href="https://www.linkedin.com/in/saif-khan-63b0802a6/" target="_blank" rel="noreferrer"><BriefcaseBusiness size={17} /> LinkedIn <ArrowUpRight size={14} /></a>
           </div>
         </div>
       </motion.aside>

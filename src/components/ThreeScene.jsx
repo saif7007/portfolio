@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { useScroll, Float, Stars, Text } from '@react-three/drei';
+import { useScroll, Float, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 
 export default function ThreeScene() {

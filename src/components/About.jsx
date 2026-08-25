@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 const capabilities = {
   frontend: {
@@ -22,6 +22,7 @@ const capabilities = {
 export default function About() {
   const [activeCapability, setActiveCapability] = useState('frontend');
   const active = capabilities[activeCapability];
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section className="section-frame about-section" id="about" aria-labelledby="about-title">
@@ -56,10 +57,10 @@ export default function About() {
             <motion.div
               className="capability-content"
               key={activeCapability}
-              initial={{ opacity: 0, y: 8 }}
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2 }}
+              exit={shouldReduceMotion ? undefined : { opacity: 0, y: -8 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2 }}
               role="tabpanel"
             >
               <p>{active.detail}</p>
