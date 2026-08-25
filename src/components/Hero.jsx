@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, BriefcaseBusiness, Code2, Sparkles } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, BriefcaseBusiness, Code2, FileText, Sparkles } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 export default function Hero({ onExplore }) {
@@ -18,6 +18,7 @@ export default function Hero({ onExplore }) {
         >
           <Sparkles size={14} aria-hidden="true" /> Full-stack engineer · Bangalore, India
         </motion.p>
+        <p className="hero-name">SAIF KHAN <span>— FULL-STACK DEVELOPER</span></p>
         <motion.h1
           id="hero-title"
           {...enter(24, 0.08)}
@@ -40,6 +41,9 @@ export default function Hero({ onExplore }) {
           </button>
           <a className="button button-secondary" href="mailto:saif112340@gmail.com?subject=Let's%20work%20together">
             Let&apos;s talk <ArrowUpRight size={18} aria-hidden="true" />
+          </a>
+          <a className="text-action" href="mailto:saif112340@gmail.com?subject=CV%20request">
+            <FileText size={17} aria-hidden="true" /> Request CV
           </a>
         </motion.div>
       </div>

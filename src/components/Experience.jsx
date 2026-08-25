@@ -16,21 +16,24 @@ export default function Experience() {
         <h2 id="experience-title">Building for the reality<br />behind the <em>requirement.</em></h2>
       </div>
       <div className="experience-card">
-        <div className="experience-role">
-          <p className="role-overline">CURRENT ROLE</p>
-          <h3>Full-stack Developer <span>@ RCS Tech LLP</span></h3>
-          <p>Bangalore · remote</p>
-        </div>
-        <div className="contribution-list">
-          {contributions.map(([title, description], index) => {
-            const Icon = contributionIcons[index];
-            return (
-              <article className="contribution" key={title}>
-                <div className="contribution-icon" aria-hidden="true"><Icon size={19} /></div>
-                <div><h4>{title}</h4><p>{description}</p></div>
-              </article>
-            );
-          })}
+        <div className="timeline-marker" aria-hidden="true"><span>NOW</span></div>
+        <div className="timeline-content">
+          <div className="experience-role">
+            <p className="role-overline">CURRENT ROLE · ENTERPRISE SOFTWARE</p>
+            <h3>Full-stack Developer <span>@ RCS Tech LLP</span></h3>
+            <p>Bangalore · remote</p>
+          </div>
+          <div className="contribution-list">
+            {contributions.map(([title, description], index) => {
+              const Icon = contributionIcons[index];
+              return (
+                <article className="contribution" key={title}>
+                  <div className="contribution-icon" aria-hidden="true"><Icon size={19} /></div>
+                  <div><h4>{title}</h4><p>{description}</p></div>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
