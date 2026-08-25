@@ -7,6 +7,7 @@ import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Background from './components/Background';
 import Contact from './components/Contact';
+import SceneEnhancement from './components/SceneEnhancement';
 
 const navigation = [
   ['About', 'about'],
@@ -51,6 +52,7 @@ function App() {
       <div className="ambient ambient-one" aria-hidden="true" />
       <div className="ambient ambient-two" aria-hidden="true" />
       <div className="page-grid" aria-hidden="true" />
+      <SceneEnhancement theme={theme} />
 
       <header className="site-header">
         <button className="wordmark" type="button" onClick={() => navigateTo('top')} aria-label="Back to top">
