@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { ArrowUpRight, Code2, ExternalLink, Layers3 } from 'lucide-react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const projects = [
   {
@@ -30,68 +29,48 @@ const projects = [
 ];
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState(projects[0].id);
-  const project = projects.find((item) => item.id === selectedProject) ?? projects[0];
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <section className="section-frame work-section" id="work" aria-labelledby="work-title">
       <div className="section-heading-row">
         <div>
-          <div className="section-kicker"><span>02</span> Selected work</div>
-          <h2 id="work-title">Show the system,<br /><em>not just the stack.</em></h2>
+          <div className="section-kicker"><span>01</span> // Selected Work</div>
+          <h2 id="work-title">Show the system,<br />not just the stack.</h2>
         </div>
-        <p className="section-aside">Each project begins with the workflow it needs to improve, then earns its complexity through the product experience.</p>
       </div>
 
-      <div className="project-explorer">
-        <div className="project-selector" role="tablist" aria-label="Selected projects">
-          {projects.map((item) => (
-            <button
-              className={item.id === selectedProject ? 'project-choice is-active' : 'project-choice'}
-              key={item.id}
-              type="button"
-              role="tab"
-              aria-selected={item.id === selectedProject}
-              onClick={() => setSelectedProject(item.id)}
-            >
-              <span>{item.number}</span>
-              <strong>{item.name}</strong>
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </button>
-          ))}
-        </div>
-
-        <AnimatePresence mode="wait">
+      <div>
+        {projects.map((project, index) => (
           <motion.article
-            className="project-detail"
+            className="project-card bento-card"
             key={project.id}
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={shouldReduceMotion ? undefined : { opacity: 0, y: -12 }}
-            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.24 }}
-            role="tabpanel"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.5, delay: 0.1 }}
           >
-            <div className="project-detail-topline">
+            <div className="project-content">
               <span className="project-type">{project.type}</span>
-              <Layers3 size={20} aria-hidden="true" />
+              <h3>{project.name}</h3>
+              <p className="project-summary">{project.summary}</p>
+              
+              <ul className="project-tags" aria-label="Technologies and strengths">
+                {project.signals.map((signal) => <li key={signal}>{signal}</li>)}
+              </ul>
+              
+              <div className="project-actions" style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
+                {project.repo && <a className="button button-primary" href={project.repo} target="_blank" rel="noreferrer"><Code2 size={17} /> Source</a>}
+                {project.live && <a className="button button-secondary" href={project.live} target="_blank" rel="noreferrer"><ExternalLink size={17} /> Live</a>}
+                {!project.repo && <span className="confidential-note" style={{ color: 'var(--text-tertiary)', fontSize: '0.85rem' }}>Internal product</span>}
+              </div>
             </div>
-            <h3>{project.name}</h3>
-            <p className="project-summary">{project.summary}</p>
-            <div className="project-story-grid">
-              <div><span>THE PROBLEM</span><p>{project.challenge}</p></div>
-              <div><span>MY CONTRIBUTION</span><p>{project.contribution}</p></div>
-            </div>
-            <ul className="project-tags" aria-label="Technologies and strengths">
-              {project.signals.map((signal) => <li key={signal}>{signal}</li>)}
-            </ul>
-            <div className="project-actions">
-              {project.repo && <a href={project.repo} target="_blank" rel="noreferrer"><Code2 size={17} /> View source</a>}
-              {project.live && <a href={project.live} target="_blank" rel="noreferrer"><ExternalLink size={17} /> Open live app</a>}
-              {!project.repo && <span className="confidential-note">Internal product · details available in conversation</span>}
+            
+            <div className="project-visual">
+              <div className="project-visual-placeholder"></div>
             </div>
           </motion.article>
-        </AnimatePresence>
+        ))}
       </div>
     </section>
   );

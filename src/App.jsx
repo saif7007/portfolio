@@ -54,49 +54,52 @@ function App() {
       <div className="page-grid" aria-hidden="true" />
       <SceneEnhancement theme={theme} />
 
-      <header className="site-header">
-        <button className="wordmark" type="button" onClick={() => navigateTo('top')} aria-label="Back to top">
-          <span className="wordmark-mark">SK</span>
-          <span>SAIF KHAN</span>
-        </button>
+      <div className="header-wrapper">
+        <header className="site-header">
+          <button className="wordmark" type="button" onClick={() => navigateTo('top')} aria-label="Back to top">
+            <span className="wordmark-mark">SK</span>
+            <span>SAIF KHAN</span>
+          </button>
 
-        <button
-          className="menu-toggle"
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="main-navigation"
-          onClick={() => setMenuOpen((isOpen) => !isOpen)}
-        >
-          <span className="sr-only">{menuOpen ? 'Close' : 'Open'} navigation</span>
-          {menuOpen ? <X size={21} /> : <Menu size={21} />}
-        </button>
+          <nav id="main-navigation" className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Primary navigation">
+            {navigation.map(([label, id]) => (
+              <button
+                className={activeSection === id ? 'nav-link is-active' : 'nav-link'}
+                key={id}
+                type="button"
+                onClick={() => navigateTo(id)}
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
 
-        <button
-          className="theme-toggle"
-          type="button"
-          onClick={() => setTheme((currentTheme) => currentTheme === 'dark' ? 'light' : 'dark')}
-          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-          title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-        >
-          {theme === 'dark' ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
-        </button>
-
-        <nav id="main-navigation" className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Primary navigation">
-          {navigation.map(([label, id]) => (
-            <button
-              className={activeSection === id ? 'nav-link is-active' : 'nav-link'}
-              key={id}
-              type="button"
-              onClick={() => navigateTo(id)}
-            >
-              {label}
-            </button>
-          ))}
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={() => setTheme((currentTheme) => currentTheme === 'dark' ? 'light' : 'dark')}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            {theme === 'dark' ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
+          </button>
+          
           <a className="nav-resume" href="mailto:saif112340@gmail.com?subject=Let's%20work%20together">
-            Request CV <ArrowUpRight size={15} aria-hidden="true" />
+            Resume <ArrowUpRight size={15} aria-hidden="true" />
           </a>
-        </nav>
-      </header>
+
+          <button
+            className="menu-toggle"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="main-navigation"
+            onClick={() => setMenuOpen((isOpen) => !isOpen)}
+          >
+            <span className="sr-only">{menuOpen ? 'Close' : 'Open'} navigation</span>
+            {menuOpen ? <X size={21} /> : <Menu size={21} />}
+          </button>
+        </header>
+      </div>
 
       <main>
         <Hero onExplore={() => navigateTo('work')} />

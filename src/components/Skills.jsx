@@ -15,25 +15,24 @@ export default function Skills() {
     <section className="section-frame skills-section" id="skills" aria-labelledby="skills-title">
       <div className="section-heading-row">
         <div>
-          <div className="section-kicker"><span>04</span> Technology stack</div>
-          <h2 id="skills-title">Tools are only useful<br />when the <em>system fits.</em></h2>
+          <div className="section-kicker"><span>02</span> // Technology Stack</div>
+          <h2 id="skills-title">Tools are only useful<br />when the system fits.</h2>
         </div>
-        <p className="section-aside">No arbitrary proficiency meters—just the tools and working patterns I use to build useful, maintainable software.</p>
       </div>
       <div className="skills-grid">
         {skillGroups.map(({ icon: Icon, label, description, skills }, index) => (
           <motion.article
-            className="skill-group"
+            className={`bento-card ${index === 0 || index === 3 ? 'skill-card-wide' : ''}`}
             key={label}
             initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.42, delay: index * 0.06 }}
           >
-            <div className="skill-icon"><Icon size={20} aria-hidden="true" /></div>
+            <div className="skill-icon"><Icon size={24} aria-hidden="true" /></div>
             <h3>{label}</h3>
             <p>{description}</p>
-            <ul>
+            <ul className="tool-list">
               {skills.map((skill) => <li key={skill}>{skill}</li>)}
             </ul>
           </motion.article>

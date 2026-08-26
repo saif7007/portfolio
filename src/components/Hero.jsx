@@ -16,21 +16,21 @@ export default function Hero({ onExplore }) {
           className="eyebrow"
           {...enter(14)}
         >
-          <Sparkles size={14} aria-hidden="true" /> Full-stack engineer · Bangalore, India
+          <Sparkles size={14} aria-hidden="true" /> Full-stack developer · Delhi, India
         </motion.p>
         <p className="hero-name">SAIF KHAN <span>— FULL-STACK DEVELOPER</span></p>
         <motion.h1
           id="hero-title"
           {...enter(24, 0.08)}
         >
-          Software for the teams<br />
-          that keep work <em>moving.</em>
+          Engineering software<br />
+          that holds up in <span>production.</span>
         </motion.h1>
         <motion.p
           className="hero-summary"
           {...enter(18, 0.16)}
         >
-          I&apos;m Saif Khan, a full-stack developer who turns operational complexity into clear, dependable web products—across dashboards, APIs, and business-critical workflows.
+          I&apos;m Saif Khan, a full-stack developer based in Delhi who turns operational complexity into clear, dependable web products—across dashboards, APIs, and business-critical workflows.
         </motion.p>
         <motion.div
           className="hero-actions"
@@ -49,30 +49,41 @@ export default function Hero({ onExplore }) {
       </div>
 
       <motion.aside
-        className="hero-terminal"
+        className="hero-widget"
         initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96, y: 22 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.65, delay: 0.2 }}
-        aria-label="Professional profile snapshot"
+        aria-label="System status snapshot"
       >
-        <div className="terminal-topline">
-          <span className="status-dot" aria-hidden="true" />
-          <span>PROFILE / 2026</span>
-          <span className="terminal-live">AVAILABLE</span>
+        <div className="widget-header">
+          <div className="widget-dots">
+            <span className="widget-dot" />
+            <span className="widget-dot" />
+            <span className="widget-dot" />
+          </div>
+          <span className="widget-title">sys_status.sh</span>
         </div>
-        <div className="terminal-body">
-          <p className="terminal-comment">// The quick read</p>
-          <dl className="profile-list">
-            <div><dt>role</dt><dd>Full-stack developer</dd></div>
-            <div><dt>focus</dt><dd>Operations &amp; management software</dd></div>
-            <div><dt>stack</dt><dd>React · Node.js · MongoDB · SQL</dd></div>
-            <div><dt>based</dt><dd>India / remote-ready</dd></div>
-          </dl>
-          <div className="terminal-rule" />
-          <p className="terminal-comment">// Explore the signals</p>
-          <div className="social-links">
-            <a href="https://github.com/saif7007" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub <ArrowUpRight size={14} /></a>
-            <a href="https://www.linkedin.com/in/saif-khan-63b0802a6/" target="_blank" rel="noreferrer"><BriefcaseBusiness size={17} /> LinkedIn <ArrowUpRight size={14} /></a>
+        <div className="widget-body">
+          <div className="widget-row">
+            <span className="widget-label">Status:</span>
+            <span className="widget-value">Online & Available</span>
+          </div>
+          <div className="widget-row">
+            <span className="widget-label">Role:</span>
+            <span className="widget-value">Full-stack Developer</span>
+          </div>
+          <div className="widget-row">
+            <span className="widget-label">Core Stack:</span>
+            <span className="widget-value">React, Node.js, MongoDB</span>
+          </div>
+          <div className="widget-row">
+            <span className="widget-label">Location:</span>
+            <span className="widget-value">Delhi, India</span>
+          </div>
+          <div className="terminal-rule" style={{ margin: '1.5rem 0', background: 'var(--card-border)', height: '1px' }} />
+          <div className="social-links" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+            <a href="https://github.com/saif7007" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none' }}><Code2 size={16} /> GitHub</a>
+            <a href="https://www.linkedin.com/in/saif-khan-63b0802a6/" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none' }}><BriefcaseBusiness size={16} /> LinkedIn</a>
           </div>
         </div>
       </motion.aside>
