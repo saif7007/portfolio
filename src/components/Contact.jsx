@@ -1,5 +1,6 @@
+
 import { useState } from 'react';
-import { ArrowUpRight, BriefcaseBusiness, Check, Code2, Copy, Mail, Phone, Send } from 'lucide-react';
+import { ArrowUpRight, Check, Copy, Mail, Phone, Send } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 const email = 'saif112340@gmail.com';
@@ -41,19 +42,23 @@ export default function Contact() {
           <div className="section-kicker"><span>04</span> // Contact</div>
           <h2 id="contact-title" style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>Let&apos;s build something<br />that earns its place.</h2>
           <p>Have a role, project, or interesting systems problem in mind? I&apos;m always happy to compare notes.</p>
-          
+
           <div style={{ marginTop: '3rem' }}>
             <a href={`mailto:${email}`} className="contact-email">
               <Mail size={24} /> {email}
             </a>
-            
+
             <div className="contact-socials">
               <button className="button button-secondary" style={{ padding: '0.6rem 1rem', fontSize: '0.8rem', minHeight: 'auto' }} type="button" onClick={copyEmail}>
                 {copied ? <Check size={16} /> : <Copy size={16} />}
                 {copied ? 'Copied' : 'Copy Email'}
               </button>
-              <a href="https://github.com/saif7007" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', border: '1px solid var(--card-border)', borderRadius: '8px' }}><Code2 size={16} /> GitHub</a>
-              <a href="https://www.linkedin.com/in/saif-khan-63b0802a6/" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', border: '1px solid var(--card-border)', borderRadius: '8px' }}><BriefcaseBusiness size={16} /> LinkedIn</a>
+              <a href="https://github.com/saif7007" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', border: '1px solid var(--card-border)', borderRadius: '8px' }}>
+                <img src="https://cdn.simpleicons.org/github/white" style={{ width: 16, height: 16 }} alt="" aria-hidden="true" /> GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/saif-khan-63b0802a6/" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1rem', border: '1px solid var(--card-border)', borderRadius: '8px' }}>
+                <svg viewBox="0 0 24 24" fill="currentColor" height="16" width="16" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn
+              </a>
             </div>
           </div>
         </div>

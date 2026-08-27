@@ -1,30 +1,43 @@
 import { ArrowUpRight, Code2, ExternalLink, Layers3 } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
+import hotel1 from '../assets/Hotel-Management/1.png';
+import hotel2 from '../assets/Hotel-Management/2.png';
+import hotel3 from '../assets/Hotel-Management/3.png';
+import hotel4 from '../assets/Hotel-Management/4.png';
+import hotel5 from '../assets/Hotel-Management/5.png';
+import traxx1 from '../assets/Traxx/1.png';
+import traxx2 from '../assets/Traxx/2.png';
+import traxx3 from '../assets/Traxx/3.png';
+import traxx4 from '../assets/Traxx/4.png';
+import traxx5 from '../assets/Traxx/5.png';
+import ProjectGallery from './ProjectGallery';
 
 const projects = [
   {
     id: 'hotel',
     number: '01',
-    name: 'Hotel Management System',
+    name: 'Hotel Management Dashboard',
     type: 'Public product · Full-stack',
-    summary: 'A management dashboard designed to bring booking operations, availability, staff coordination, and reporting into one understandable workspace.',
+    summary: 'A comprehensive management dashboard designed to bring booking operations, room availability, staff coordination, and detailed reporting into one understandable workspace.',
     challenge: 'Hotel operations produce a lot of moving information. The product needed to make day-to-day status easy to scan without losing the detail needed for follow-up.',
     contribution: 'Built the full-stack application with a React interface, Node/Express services, MongoDB persistence, and REST API integrations.',
     signals: ['React', 'Node.js', 'Express', 'MongoDB', 'REST API'],
     repo: 'https://github.com/saif7007/Hotel-management',
     live: 'https://hotel-management-uvvw.onrender.com/',
+    images: [hotel1, hotel2, hotel3, hotel4, hotel5],
   },
   {
-    id: 'assets',
+    id: 'traxx',
     number: '02',
-    name: 'Asset Management Application',
-    type: 'Enterprise product · Internal',
-    summary: 'A scalable application for teams that need a clearer way to keep track of business assets and the work attached to them.',
-    challenge: 'The system needed to support enterprise workflows while keeping the interface direct for people who work with asset information every day.',
-    contribution: 'Spearheaded the application from the ground up, connecting complex frontend logic to secure backend APIs and iterating against real client needs.',
-    signals: ['Enterprise workflows', 'Secure APIs', 'Data management', 'Frontend logic', 'QA'],
+    name: 'TRAXX & DHL Asset Management',
+    type: 'Enterprise product · RCS Tech LLP',
+    summary: 'A highly scalable enterprise web application built for TRAXX and DHL, focusing on real-time tracking of business assets and rigorous logistics workflows.',
+    challenge: 'The system needed to support complex enterprise data pipelines while keeping the interface direct for operations teams who track physical assets globally every day.',
+    contribution: 'Architected complex frontend logic connected to secure backend APIs, ensuring system stability, rapid bug resolution, and client satisfaction (RBL Bank ops included).',
+    signals: ['Enterprise workflows', 'Secure APIs', 'Data management', 'Frontend logic', 'System Stability'],
     repo: null,
     live: null,
+    images: [traxx1, traxx2, traxx3, traxx4, traxx5],
   },
 ];
 
@@ -62,12 +75,12 @@ export default function Projects() {
               <div className="project-actions" style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
                 {project.repo && <a className="button button-primary" href={project.repo} target="_blank" rel="noreferrer"><Code2 size={17} /> Source</a>}
                 {project.live && <a className="button button-secondary" href={project.live} target="_blank" rel="noreferrer"><ExternalLink size={17} /> Live</a>}
-                {!project.repo && <span className="confidential-note" style={{ color: 'var(--text-tertiary)', fontSize: '0.85rem' }}>Internal product</span>}
+                {!project.repo && <span className="confidential-note" style={{ color: 'var(--text-tertiary)', fontSize: '0.85rem', alignSelf: 'center' }}>Enterprise internal system</span>}
               </div>
             </div>
             
             <div className="project-visual">
-              <div className="project-visual-placeholder"></div>
+              <ProjectGallery images={project.images} altPrefix={project.name} />
             </div>
           </motion.article>
         ))}

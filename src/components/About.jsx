@@ -5,17 +5,37 @@ const capabilities = {
   frontend: {
     label: '01 / Frontend',
     detail: 'Interfaces that make dense operational work feel legible: responsive layouts, considered interaction, and useful state—not decoration for its own sake.',
-    tools: ['React', 'Next.js', 'JavaScript (ES6+)', 'Three.js', 'Tailwind CSS', 'Framer Motion'],
+    tools: [
+      { name: 'React', logo: 'https://cdn.simpleicons.org/react/61DAFB' },
+      { name: 'Next.js', logo: 'https://cdn.simpleicons.org/nextdotjs/white' },
+      { name: 'JavaScript (ES6+)', logo: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
+      { name: 'Three.js', logo: 'https://cdn.simpleicons.org/threedotjs/white' },
+      { name: 'Tailwind CSS', logo: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
+      { name: 'Framer Motion', logo: 'https://cdn.simpleicons.org/framer/white' }
+    ],
   },
   backend: {
     label: '02 / Backend',
     detail: 'APIs and data flows built to support the product, with maintainable service boundaries and a practical eye on reliability.',
-    tools: ['Node.js', 'Express', 'REST APIs', 'MongoDB', 'SQL', 'System architecture'],
+    tools: [
+      { name: 'Node.js', logo: 'https://cdn.simpleicons.org/nodedotjs/339933' },
+      { name: 'Express', logo: 'https://cdn.simpleicons.org/express/white' },
+      { name: 'REST APIs', logo: 'https://cdn.simpleicons.org/json/white' },
+      { name: 'MongoDB', logo: 'https://cdn.simpleicons.org/mongodb/47A248' },
+      { name: 'SQL', logo: 'https://cdn.simpleicons.org/mysql/4479A1' },
+      { name: 'System architecture', logo: 'https://cdn.simpleicons.org/docker/2496ED' }
+    ],
   },
   product: {
     label: '03 / Delivery',
     detail: 'I work from the workflow outward—understanding the people, hand-offs, and information each screen needs to support before writing the interface.',
-    tools: ['Requirements discovery', 'Workflow design', 'Client delivery', 'QA & testing', 'Iterative delivery'],
+    tools: [
+      { name: 'Requirements discovery', logo: 'https://cdn.simpleicons.org/notion/white' },
+      { name: 'Workflow design', logo: 'https://cdn.simpleicons.org/figma/F24E1E' },
+      { name: 'Client delivery', logo: 'https://cdn.simpleicons.org/zoom/white' },
+      { name: 'QA & testing', logo: 'https://cdn.simpleicons.org/testinglibrary/E33332' },
+      { name: 'Iterative delivery', logo: 'https://cdn.simpleicons.org/github/white' }
+    ],
   },
 };
 
@@ -72,7 +92,12 @@ export default function About() {
             >
               <p style={{ fontSize: '1.1rem', color: 'var(--text-primary)', lineHeight: 1.6, marginBottom: '2rem' }}>{active.detail}</p>
               <ul className="tool-list">
-                {active.tools.map((tool) => <li key={tool}>{tool}</li>)}
+                {active.tools.map((tool) => (
+                  <li key={tool.name}>
+                    {tool.logo && <img src={tool.logo} alt="" className="tool-logo" aria-hidden="true" />}
+                    {tool.name}
+                  </li>
+                ))}
               </ul>
             </motion.div>
           </AnimatePresence>
